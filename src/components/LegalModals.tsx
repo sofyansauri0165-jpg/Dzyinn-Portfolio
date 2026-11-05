@@ -52,8 +52,8 @@ export const LegalModals: React.FC<LegalModalProps> = ({ type, onClose }) => {
                 Website ini tidak mengumpulkan data pribadi secara diam-diam melalui cookies pelacak pihak ketiga. Informasi yang Anda masukkan dalam formulir kontak (nama, email, pesan) hanya digunakan secara langsung untuk mengirimkan pesan ke WhatsApp atau email resmi tanpa disimpan di database eksternal publik.
               </p>
               <p>
-                <strong>3. Penyimpanan Lokal Foto Profil</strong><br />
-                Jika Anda mengunggah foto profil kustom melalui fitur "Ganti Foto Profil", file tersebut hanya disimpan secara lokal di memori browser (Local Storage) perangkat Anda sendiri dan tidak diunggah ke server backend eksternal.
+                <strong>3. Penggunaan Media & Portofolio</strong><br />
+                Seluruh materi visual, foto profil, dan aset media yang ditampilkan di situs ini merupakan hak cipta dan representasi resmi dari Sopian Sahuri dan ekosistem YannStudio.
               </p>
               <p>
                 <strong>4. Kontak</strong><br />

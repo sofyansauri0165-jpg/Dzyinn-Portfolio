@@ -20,9 +20,21 @@ export const ShortIntro: React.FC<ShortIntroProps> = ({ onNavigateToAbout }) => 
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
               More About Me
             </h2>
-            <p className="text-sm text-neutral-400 mt-2 font-mono">
-              [ {PERSONAL_INFO.fullName} ]
-            </p>
+            <div className="flex items-center gap-3 mt-3">
+              <img
+                src={PERSONAL_INFO.profilePhoto || '/profile.png'}
+                alt={PERSONAL_INFO.fullName}
+                className="w-10 h-10 rounded-full object-cover object-[center_20%] border border-[#DC2626]/50 shadow-sm shrink-0"
+              />
+              <div>
+                <p className="text-sm font-semibold text-white">
+                  {PERSONAL_INFO.fullName}
+                </p>
+                <p className="text-xs text-neutral-400 font-mono">
+                  {PERSONAL_INFO.roleTitle}
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Description & Narrative */}

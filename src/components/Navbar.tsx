@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Camera } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  onOpenPhotoModal: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenPhotoModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -83,14 +82,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenP
           {/* Zone 3: 1 primary action */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <button
-              onClick={onOpenPhotoModal}
-              title="Ganti Foto Profil Anda"
-              className="p-2 text-neutral-400 hover:text-white hover:bg-[#1a1a1a] rounded-lg border border-transparent hover:border-[#262626] transition-colors"
-              aria-label="Ubah foto profil"
-            >
-              <Camera size={18} />
-            </button>
-            <button
               onClick={() => handleNavClick('contact')}
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#DC2626] hover:bg-[#b91c1c] active:bg-[#991B1B] rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-sm shadow-red-950/40"
             >
@@ -101,13 +92,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenP
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={onOpenPhotoModal}
-              className="p-2 text-neutral-400 hover:text-white rounded-lg hover:bg-[#1c1c1c]"
-              aria-label="Ganti foto profil"
-            >
-              <Camera size={18} />
-            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-neutral-300 hover:text-white rounded-lg hover:bg-[#1c1c1c] focus:outline-none"

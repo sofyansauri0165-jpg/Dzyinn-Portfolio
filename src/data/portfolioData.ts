@@ -52,6 +52,7 @@ export const PERSONAL_INFO = {
   instagramUrl: 'https://instagram.com/_fyaaaan',
   statusLabel: 'Sedang mengeksplorasi Generatif AI & merintis YannStudio',
   bio: 'Saya memiliki ketertarikan mendalam dalam eksplorasi teknologi Generatif AI, multimedia editing, desain grafis, dan pengembangan ekosistem kreatif digital melalui YannStudio.',
+  profilePhoto: '/profile.png',
   story: 'Perjalanan saya berawal dari rasa ingin tahu yang besar terhadap teknologi masa depan dengan mengikuti pelatihan LPK Gen AI (Generative Artificial Intelligence). Dari hobi bereksperimen dengan berbagai tools digital, visual, dan prompt engineering, saya menemukan antusiasme untuk terus belajar memadukan kreativitas dan teknologi dalam karya nyata.',
   hobbies: 'Eksplorasi AI Prompting, Video Editing, Gaming (Mobile Legends & Free Fire), Desain Visual, dan Pengembangan Ide Bisnis.',
   goalsShortTerm: 'Memperdalam penguasaan tools Generatif AI, konsisten memproduksi karya multimedia bernilai tinggi, serta meluncurkan layanan kreatif perdana YannStudio.',

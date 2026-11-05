@@ -1,15 +1,13 @@
 import React from 'react';
-import { MapPin, Mail, Phone, Instagram, Calendar, Target, Flag, Compass, Sparkles, Camera, CheckCircle2 } from 'lucide-react';
+import { MapPin, Mail, Phone, Instagram, Calendar, Target, Flag, Compass, Sparkles, CheckCircle2 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface AboutPageProps {
-  onOpenPhotoModal: () => void;
-  userPhoto: string | null;
+  userPhoto?: string | null;
   onNavigateToContact: () => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({
-  onOpenPhotoModal,
   userPhoto,
   onNavigateToContact,
 }) => {
@@ -39,44 +37,26 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             />
 
             <div className="relative flex-1 rounded-2xl bg-[#171717] border border-[#2a2a2a] overflow-hidden flex flex-col items-center justify-center group">
-              {userPhoto ? (
+              <div className="relative w-full h-full">
                 <img
-                  src={userPhoto}
+                  src={userPhoto || PERSONAL_INFO.profilePhoto || '/profile.png'}
                   alt="Foto Sopian Sahuri"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
                 />
-              ) : (
-                <div className="p-8 text-center flex flex-col items-center justify-center space-y-4">
-                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#DC2626]/20 to-[#991B1B]/40 border-2 border-[#DC2626] flex items-center justify-center">
-                    <span className="font-poster text-4xl text-white">SS</span>
-                  </div>
-                  <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-neutral-300 block">
-                      [ AREA FOTO PROFIL ]
-                    </span>
-                    <span className="text-[11px] text-neutral-500 mt-1 block">
-                      Gunakan foto terbaik Anda untuk memperkuat personal branding
-                    </span>
-                  </div>
-                  <button
-                    onClick={onOpenPhotoModal}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#DC2626]/20 hover:bg-[#DC2626] text-white text-xs font-medium transition-colors border border-[#DC2626]/40"
-                  >
-                    <Camera size={13} />
-                    <span>Upload Foto</span>
-                  </button>
-                </div>
-              )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 pointer-events-none" />
+                
+                {/* Corner Accent Graphic Mark */}
+                <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-[#DC2626]/80 pointer-events-none" />
 
-              {userPhoto && (
-                <button
-                  onClick={onOpenPhotoModal}
-                  className="absolute bottom-3 right-3 px-3 py-1.5 bg-black/80 hover:bg-[#DC2626] text-white text-xs rounded-lg border border-white/20 transition-all flex items-center gap-1.5"
-                >
-                  <Camera size={12} />
-                  <span>Ganti Foto</span>
-                </button>
-              )}
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-left pointer-events-none">
+                  <span className="text-[11px] font-mono tracking-wider text-white/90 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
+                    SOPIAN SAHURI
+                  </span>
+                  <span className="text-[10px] font-mono tracking-wider text-[#DC2626] bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-red-500/20">
+                    PORTRAIT
+                  </span>
+                </div>
+              </div>
             </div>
 
             <div className="pt-3 text-center">

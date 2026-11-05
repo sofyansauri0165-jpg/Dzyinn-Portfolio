@@ -14,42 +14,15 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { YannStudioPage } from './components/DzyinnStudioPage';
 import { ContactPage } from './components/ContactPage';
 import { Footer } from './components/Footer';
-import { PhotoUploaderModal } from './components/PhotoUploaderModal';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { LegalModals } from './components/LegalModals';
-import { Project } from './data/portfolioData';
+import { Project, PERSONAL_INFO } from './data/portfolioData';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
-  const [userPhoto, setUserPhoto] = useState<string | null>(null);
-  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+  const userPhoto = PERSONAL_INFO.profilePhoto || '/profile.png';
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [legalModalType, setLegalModalType] = useState<'privacy' | 'terms' | null>(null);
-
-  // Load saved custom photo from localStorage on mount
-  useEffect(() => {
-    try {
-      const savedPhoto = localStorage.getItem('sopian_portfolio_photo');
-      if (savedPhoto) {
-        setUserPhoto(savedPhoto);
-      }
-    } catch {
-      // localStorage may fail in restricted sandboxes
-    }
-  }, []);
-
-  const handleSavePhoto = (newPhoto: string | null) => {
-    setUserPhoto(newPhoto);
-    try {
-      if (newPhoto) {
-        localStorage.setItem('sopian_portfolio_photo', newPhoto);
-      } else {
-        localStorage.removeItem('sopian_portfolio_photo');
-      }
-    } catch {
-      // Ignore storage errors
-    }
-  };
 
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
@@ -62,7 +35,6 @@ export default function App() {
       <Navbar
         activeTab={activeTab}
         setActiveTab={handleTabChange}
-        onOpenPhotoModal={() => setIsPhotoModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -71,7 +43,6 @@ export default function App() {
           <>
             <HeroSection
               onNavigate={handleTabChange}
-              onOpenPhotoModal={() => setIsPhotoModalOpen(true)}
               userPhoto={userPhoto}
             />
             <ShortIntro
@@ -98,7 +69,6 @@ export default function App() {
 
         {activeTab === 'about' && (
           <AboutPage
-            onOpenPhotoModal={() => setIsPhotoModalOpen(true)}
             userPhoto={userPhoto}
             onNavigateToContact={() => handleTabChange('contact')}
           />
@@ -127,14 +97,6 @@ export default function App() {
       <Footer
         setActiveTab={handleTabChange}
         onOpenLegal={(type) => setLegalModalType(type)}
-      />
-
-      {/* Interactive Photo Uploader / Customizer Modal */}
-      <PhotoUploaderModal
-        isOpen={isPhotoModalOpen}
-        onClose={() => setIsPhotoModalOpen(false)}
-        currentPhoto={userPhoto}
-        onSavePhoto={handleSavePhoto}
       />
 
       {/* Project Detail Lightbox Modal */}

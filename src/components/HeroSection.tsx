@@ -1,16 +1,14 @@
 import React from 'react';
-import { ArrowUpRight, Mail, Instagram, MessageCircle, MapPin, Sparkles, Camera, Layers, Compass, Rocket } from 'lucide-react';
+import { ArrowUpRight, Mail, Instagram, MessageCircle, MapPin, Layers, Compass, Rocket } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface HeroSectionProps {
   onNavigate: (tab: string) => void;
-  onOpenPhotoModal: () => void;
-  userPhoto: string | null;
+  userPhoto?: string | null;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onNavigate,
-  onOpenPhotoModal,
   userPhoto,
 }) => {
   return (
@@ -141,55 +139,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 aria-hidden="true" 
               />
 
-              {/* Photo Area with no fake human faces - clean silhouette / uploadable user photo */}
+              {/* Permanent Profile Portrait Container */}
               <div className="relative flex-1 rounded-2xl bg-[#171717] border border-[#2a2a2a] overflow-hidden flex flex-col items-center justify-center">
-                {userPhoto ? (
+                <div className="relative w-full h-full">
                   <img
-                    src={userPhoto}
+                    src={userPhoto || PERSONAL_INFO.profilePhoto || '/profile.png'}
                     alt="Foto Profil Sopian Sahuri"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
                   />
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-center p-6 space-y-4">
-                    {/* Architectural Crimson Disk & Monogram */}
-                    <div className="relative w-32 h-32 rounded-full bg-gradient-to-b from-[#DC2626]/20 to-[#991B1B]/40 border-2 border-[#DC2626] flex items-center justify-center shadow-inner">
-                      <span className="font-poster text-5xl text-white tracking-widest">
-                        SS
-                      </span>
-                      <div className="absolute -bottom-1 -right-1 p-1.5 rounded-full bg-[#0A0A0A] border border-[#DC2626] text-[#DC2626]">
-                        <Sparkles size={14} />
-                      </div>
-                    </div>
+                  {/* Gradient vignette for sleek editorial contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 pointer-events-none" />
 
-                    <div>
-                      <p className="text-sm font-semibold text-white tracking-wide">
-                        [ AREA FOTO PROFIL ]
-                      </p>
-                      <p className="text-xs text-neutral-400 mt-1 max-w-[220px]">
-                        Siap diganti dengan foto asli Anda tanpa merusak tata letak
-                      </p>
-                    </div>
+                  {/* Corner Accent Graphic Mark */}
+                  <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-[#DC2626]/80 pointer-events-none" />
 
-                    <button
-                      onClick={onOpenPhotoModal}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#DC2626]/20 hover:bg-[#DC2626] border border-[#DC2626]/50 hover:border-transparent text-xs text-white font-medium transition-all"
-                    >
-                      <Camera size={13} />
-                      <span>Upload / Ganti Foto</span>
-                    </button>
+                  {/* Bottom photo badge */}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-left pointer-events-none">
+                    <span className="text-[11px] font-mono tracking-wider text-white/90 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
+                      SOPIAN SAHURI
+                    </span>
+                    <span className="text-[10px] font-mono tracking-wider text-[#DC2626] bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-red-500/20">
+                      FOUNDER
+                    </span>
                   </div>
-                )}
-
-                {/* Always-accessible Quick Hover Action to replace photo */}
-                {userPhoto && (
-                  <button
-                    onClick={onOpenPhotoModal}
-                    className="absolute bottom-3 right-3 px-3 py-1.5 bg-black/70 hover:bg-[#DC2626] backdrop-blur-md text-white text-xs rounded-lg border border-white/20 transition-all flex items-center gap-1.5 opacity-90 group-hover:opacity-100"
-                  >
-                    <Camera size={12} />
-                    <span>Ganti Foto</span>
-                  </button>
-                )}
+                </div>
               </div>
 
               {/* Bottom Card Identity Footer */}
